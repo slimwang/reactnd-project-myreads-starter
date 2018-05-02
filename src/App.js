@@ -22,6 +22,10 @@ class BooksApp extends React.Component {
       });
     }
 
+  moveBook = (selectedBook, targetShelf) => {
+    BooksAPI.update(selectedBook, targetShelf).then(response => console.log(response))
+  }
+
   render() {
     return (
       <div className="app">
@@ -48,6 +52,7 @@ class BooksApp extends React.Component {
           </div>
         ) : (
           <ListBooks
+            onMoveBook={ this.moveBook }
             books={ this.state.books }
           />
         )}

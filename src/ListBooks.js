@@ -11,6 +11,7 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             <Bookshelf
+              onMoveBook={ this.props.onMoveBook }
               shelf="currentlyReading"
               books={ this.props.books.filter((book) => book.shelf==="currentlyReading") }
             />
