@@ -23,7 +23,11 @@ class BooksApp extends React.Component {
     }
 
   moveBook = (selectedBook, targetShelf) => {
-    BooksAPI.update(selectedBook, targetShelf).then(response => console.log(response))
+    BooksAPI.update(selectedBook, targetShelf).then(books => {
+      this.setState(state => ({
+        books: state.books.concat([books])
+      }))
+    })
   }
 
   render() {
