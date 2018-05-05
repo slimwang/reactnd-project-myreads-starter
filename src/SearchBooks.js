@@ -47,10 +47,12 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <Bookshelf
-            onMoveBook={ this.props.onMoveBook }
-            books={this.state.searchedBooks}
-          />
+          { this.state.query && (
+            <Bookshelf
+              onMoveBook={ this.props.onMoveBook }
+              books={this.state.searchedBooks}
+            />
+          ) }
         </div>
       </div>
     )
