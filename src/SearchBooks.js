@@ -28,9 +28,32 @@ class SearchBooks extends Component {
       .search(query)
       .then(response => {
         if(this.state.query) {
-          this.setState({searchedBooks: response})
+          this.mergeBooks(response)
         }
       })
+  }
+
+  mergeBooks(response) {
+    const allBooks = this.props.books
+    const newBooks = response
+    let mergedBooks = []
+
+    // let f = newBooks.filter(nbook => allBooks.find(b => b.id === nbook.id))
+    // console.log(f);
+    newBooks.forEach(nbook => {
+      // const book = allBooks.find( b => b.id === this.id, nbook )
+      function f(b){
+        return b.id === this.id;
+      }
+      const book = allBooks.find(f, nbook)
+      if(book) {
+        mergedBooks.push(book)
+      }else{
+        mergedBooks.push(nbook)
+      }
+    })
+    console.log(mergedBooks)
+    this.setState({searchedBooks: mergedBooks})
   }
 
   render() {
