@@ -47,7 +47,6 @@ class SearchBooks extends Component {
         mergedBooks.push(nbook)
       }
     })
-    console.log(mergedBooks)
     this.setState({searchedBooks: mergedBooks})
   }
 
