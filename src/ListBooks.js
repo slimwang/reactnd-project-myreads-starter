@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 
+const shelves = ["currentlyReading", "wantToRead", "read"]
+
 const ListBooks = (props) => (
   <div className="list-books">
     <div className="list-books-title">
@@ -9,21 +11,13 @@ const ListBooks = (props) => (
     </div>
     <div className="list-books-content">
       <div>
-        <Bookshelf
-          onMoveBook={ props.onMoveBook }
-          shelf="currentlyReading"
-          books={ props.books.filter((book) => book.shelf==="currentlyReading") }
-        />
-        <Bookshelf
-          onMoveBook={ props.onMoveBook }
-          shelf="wantToRead"
-          books={ props.books.filter((book) => book.shelf==="wantToRead") }
-        />
-        <Bookshelf
-          onMoveBook={ props.onMoveBook }
-          shelf="read"
-          books={ props.books.filter((book) => book.shelf==="read") }
-        />
+        {shelves.map(shelf => (
+          <Bookshelf
+            onMoveBook={ props.onMoveBook }
+            shelf={shelf}
+            books={ props.books.filter(book => book.shelf===shelf) }
+          />
+        ))}
       </div>
     </div>
     <div className="open-search">
